@@ -14,16 +14,10 @@ def hello_admin():
 @app.route("/display", methods=['POST'])
 def f1():
     pname = request.form['n1']
-    pid = request.form['n2']
-    pcost = request.form['n3']
-    tax = int(float(pcost)) * 0.18
-    total = int(float(pcost)) + tax
-    s = f'<h2><font color="blue">This is <b><font color="green">{pname}</font></b> details</h2></font>'
-    s += f"<p>Product ID: {pid}</p>"
-    s += f"<p>Product Cost: {pcost}</p>"
-    s += f"<p>Tax: {tax}</p>"
-    s += f"<p>Total Cost: {total}</p>"
-    return s  
+    age = request.form['n2']
+    place = request.form['n3']
+    edu = request.form['n4']
+    return render_template('your_template.html', pname=pname, age=age, place=place, edu=edu)
 
 @app.route("/Home")
 def f2():
