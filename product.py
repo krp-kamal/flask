@@ -6,7 +6,6 @@ from flask import *
 
 app = Flask(__name__)
 
-# Route for the product enrollment form
 @app.route('/')
 def enrollment_form():
     return render_template('enrollment.html')
@@ -21,7 +20,7 @@ def submit_form():
     total = cost * quantity
     tax = total * 0.18
     gross_pay = total + tax
-   return render_template('display.html', name=name, code=code, cost=cost, quantity=quantity, total=total, tax=tax, gross_pay=gross_pay)
+    return render_template('display.html', name=name, code=code, cost=cost, quantity=quantity, total=total, tax=tax, gross_pay=gross_pay)
 
 if __name__ == '__main__':
     app.run(debug=True)
