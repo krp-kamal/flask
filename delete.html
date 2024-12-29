@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Employee List</title>
+</head>
+<body>
+    <h1>Employee List</h1>
+
+    {% if deleted_empid %}
+        <p><strong>Employee with ID {{ deleted_empid }} has been deleted.</strong></p>
+    {% endif %}
+
+    <table border="1">
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Department</th>
+            <th>City</th>
+            <th>Salary</th>
+            <th>Actions</th>
+        </tr>
+        {% for employee in rows %}
+        <tr>
+            <td>{{ employee['id'] }}</td>
+            <td>{{ employee['name'] }}</td>
+            <td>{{ employee['dept'] }}</td>
+            <td>{{ employee['city'] }}</td>
+            <td>{{ employee['salary'] }}</td>
+            <td>
+                <form action="/view" method="POST">
+                    <input type="hidden" name="id" value="{{ employee['id'] }}">
+                    <button type="submit">Delete</button>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+    <br>
+    <a href="/view">Go to Delete Employee Page</a>
+</body>
+</html>
