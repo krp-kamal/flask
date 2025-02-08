@@ -8,37 +8,64 @@
 <body>
     <h1>Employee List</h1>
 
+    <!-- Display message if an employee is deleted -->
     {% if deleted_empid %}
         <p><strong>Employee with ID {{ deleted_empid }} has been deleted.</strong></p>
     {% endif %}
 
+    <!-- Employee table -->
     <table border="1">
-        <tr>
-            <th>ID</th>
-            <th>Name</th>
-            <th>Department</th>
-            <th>City</th>
-            <th>Salary</th>
-            <th>Actions</th>
-        </tr>
-        {% for employee in rows %}
-        <tr>
-            <td>{{ employee['id'] }}</td>
-            <td>{{ employee['name'] }}</td>
-            <td>{{ employee['dept'] }}</td>
-            <td>{{ employee['city'] }}</td>
-            <td>{{ employee['salary'] }}</td>
-            <td>
-                <form action="/view" method="POST">
-                    <input type="hidden" name="id" value="{{ employee['id'] }}">
-                    <button type="submit">Delete</button>
-                </form>
-            </td>
-        </tr>
-        {% endfor %}
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>City</th>
+                <th>Salary</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for employee in rows %}
+            <tr>
+                <td>{{ employee['id'] }}</td>
+                <td>{{ employee['name'] }}</td>
+                <td>{{ employee['dept'] }}</td>
+                <td>{{ employee['city'] }}</td>
+                <td>{{ employee['salary'] }}</td>
+                <td>
+                    <!-- Form to delete an employee -->
+                    <form action="/delete" method="POST" style="display:inline;">
+                        <input type="hidden" name="id" value="{{ employee['id'] }}">
+                        <button type="submit" style="background-color: red; color: white; padding: 0.3rem;">Delete</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
 
     <br>
-    <a href="/view">Go to Delete Employee Page</a>
+
+    <!-- Form to delete employee by ID -->
+    <h2>Delete Employee by ID</h2>
+    <form action="/delete" method="post">
+        <table>
+            <tr>
+                <td><p style="color:black;"><i><b>EmpId</b></i></p></td>
+                <td><input type="text" name="id" required></td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <input type="submit" name="Submit" style="background-color: crimson; color: white; padding: 0.5rem;" value="Delete">
+                </td>
+            </tr>
+        </table>
+    </form>
+
+    <!-- Button to redirect to view.html -->
+    <form action="view.html" style="margin-top: 1rem;">
+        <button type="submit" style="background-color: crimson; color: white; padding: 0.5rem;">Go to View Page</button>
+    </form>
 </body>
 </html>

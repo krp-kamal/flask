@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Summary</title>
+</head>
+<body>
+    <h2>Submitted Product Details</h2>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Product Name</th>
+                <th>Product ID</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Total Cost</th>
+                <th>Tax (18%)</th>
+                <th>Final Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in entries %}
+            <tr>
+                <td>{{ entry.product_name }}</td>
+                <td>{{ entry.product_id }}</td>
+                <td>${{ entry.price }}</td>
+                <td>{{ entry.quantity }}</td>
+                <td>${{ entry.total_cost }}</td>
+                <td>${{ entry.tax }}</td>
+                <td>${{ entry.final_price }}</td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>

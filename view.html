@@ -6,37 +6,28 @@
     <title>Document</title>
 </head>
 <body style='background-image: url();'>
-    
-
-    <h2><center> <mark>Employee Enrolled</mark></center></h3>
-        <center><table border=5 ;>
+    <h2><center><mark>Employee Enrolled</mark></center></h2>
+    <center><table border="5">
+        <thead>
+            <tr> <!-- Added <tr> to wrap <th> -->
+                <th>EmpId</th>
+                <th>Name</th>
+                <th>Department</th>
+                <th>City</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
         
-            <thead>
-                <td>EmpId</td>
-                <td>Name</td>
-                <td>Department</td>
-                <td>City</td>
-                <td>Salary</td>
-            </thead>
-            
-            {% for row in rows %}
-            
-                <tr>
-                    <td >{{row["id"]}}</td>
-                    <td>{{row["name"]}}</td>
-                    <td>{{row["dept"]}}</td>
-                    <td>{{row["city"]}}</td>
-                    <td>{{row["salary"]}}</td>
-                </tr>
-            {% endfor %}
-        </table>
-        </center>
-
-       
-        
-
-
-
-
+        {% for row in rows %}
+            <tr>
+                <td>{{row["id"]}}</td>
+                <td>{{row["name"]}}</td>
+                <td>{{row["dept"]}}</td>
+                <td>{{row["city"]}}</td>
+                <td>{{row["salary"]}}</td>
+            </tr>
+        {% endfor %}
+    </table>
+    </center>
 </body>
 </html>

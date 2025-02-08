@@ -1,9 +1,10 @@
 import sqlite3
-db=sqlite3.connect("employee.db")
-print("database connected successfully")
-cursor=db.cursor()
-cursor.execute("create table emptable(id int ,name text,dept text,city text,salary text)")
+db = sqlite3.connect("employee.db")
+print("Database connected successfully")
 
-print("table  created")
+cursor = db.cursor()
+
+cursor.execute("CREATE TABLE emptable(id INTEGER, name TEXT, dept TEXT, city TEXT, salary REAL)")
+print("Table created successfully")
+
 db.close()
-
